@@ -1,160 +1,159 @@
 <html>
 
 <head>
-<title>Boolean List Manipulator</title>
+	<title>Boolean List Manipulator</title>
 </head>
 
 <body>
 
-<h1>Boolean List Manipulator</h1>
+	<h1>Boolean List Manipulator</h1>
 
-<form name="ListForm">
+	<form name="ListForm">
 
-<h3>Data</h3>
-
-<table border="0" cellspacing="0" cellpadding="4">
-<tr align="left" valign="middle">
-<td>List A :<br>
-<textarea name="textListA" cols="30" rows="15" id="textListA">Value 1
+		<div class="data-form">
+			<div class="data-cell">
+				List A :<br>
+				<textarea name="textListA" id="textListA">Value 1
 Value 2
-Value 3</textarea></td>
-<td align="center"><p>+</p>
-  <p>
-    <select name="listOperands" size="1" id="listOperands">
-      <option value="2" selected>Subtract</option>
-      <option value="3">Intersection</option>
-      <option value="4">Aggregation</option>
-      <option value="5">Remove Duplicates</option>
-    </select>
-</p></td>
-<td>List B :<br>
-<textarea name="textListB" cols="30" rows="15" id="textListB">Value 2</textarea></td>
-<td align="center">=</td>
-<td>Result List :<br>
-<textarea name="textListResult" cols="30" rows="15" id="textListResult"></textarea></td>
-</tr>
-<tr align="left" valign="middle">
-  <td>&nbsp;</td>
-  <td align="center">&nbsp;</td>
-  <td>&nbsp;</td>
-  <td align="center">&nbsp;</td>
-  <td><input type="button" value="Generate" name="buttonRun" onClick="doRunScript();"></td>
-</tr>
-</table>
+Value 3</textarea>
+			</div>
+			<div class="data-cell">
+				<select name="listOperands" size="1" id="listOperands">
+					<option value="2" selected>Subtract</option>
+					<option value="3">Intersection</option>
+					<option value="4">Aggregation</option>
+					<option value="5">Remove Duplicates</option>
+				</select>
+			</div>
+			<div class="data-cell">
+				List B :<br>
+				<textarea name="textListB" id="textListB">Value 2</textarea>
+			</div>
+			<div class="data-cell">
+				=
+			</div>
+			<div class="data-cell">
+				Result List :<br>
+				<textarea readonly name="textListResult" id="textListResult"></textarea>
+			</div>
+		</div>
 
-<h3>Options</h3>
-<p>
-  <input name="checkCaseless" type="checkbox" id="checkCaseInsensitive" value="checkbox" checked>Case insensitive<br>
-  <input name="checkIgnoreSpaces" type="checkbox" id="checkIgnoreSpaces" value="checkbox" checked>Ignore spaces<br>
-  <input name="checkRemoveEmpty" type="checkbox" id="checkRemoveEmpty" value="checkbox" checked>Remove empty lines
-</p>
+		<div>
+			<button type="button" name="buttonRun" onClick="doRunScript();">Generate</button>
+		</div>
 
-<p>&nbsp;</p>
+		<h2>Options</h2>
+		<div>
+			<input name="checkCaseless" type="checkbox" id="checkCaseInsensitive" value="checkbox" checked>Case insensitive<br>
+			<input name="checkIgnoreSpaces" type="checkbox" id="checkIgnoreSpaces" value="checkbox" checked>Ignore spaces<br>
+			<input name="checkRemoveEmpty" type="checkbox" id="checkRemoveEmpty" value="checkbox" checked>Remove empty lines
+		</div>
 
-</form>
+	</form>
 
-<p>Tom Söderlund 2006</p>
+	<p><a href="https://twitter.com/tomsoderlund">Tom Söderlund</a> 2018</p>
 
 </body>
 
-<script language="JavaScript">
+<script src="app.js" type="text/javascript" async></script>
 
-function getTextfieldAsArray(textfieldObj) {
-	textArray = new Array();
-	//textArray[99] = "midnightblue";
-	strCount = 0;
-	strPos = -1;
-	strOldPos = 0;
-	while ((strPos = textfieldObj.value.indexOf('\n', strPos+1)) != -1) {
-		wordStr = textfieldObj.value.substring(strOldPos, strPos);
-		//alert('"' + wordStr + '"');
-		textArray[strCount] = wordStr;
-		strCount++;
-		strOldPos = strPos + 1;
+<style type="text/css" media="screen">
+
+	body {
+		font-family: sans-serif;
 	}
-	if (strOldPos < textfieldObj.value.length-1) {
-		strPos = textfieldObj.value.length;
-		wordStr = textfieldObj.value.substring(strOldPos, strPos);
-		//alert('"' + wordStr + '"');
-		textArray[strCount] = wordStr;
+
+	.data-form {
+		display: inline-flex; /* inline-flex */
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
 	}
-	return textArray;
-}
 
-function doRunScript() {
-	//alert('Word count: ' + getTextfieldAsArray(ListForm.textWords1).length);
-	appMode = ListForm.listOperands.value;
-
-	// Read words
-	arrayWordlist = new Array();
-	arrayWordlist[0] = getTextfieldAsArray(ListForm.textListA);
-	arrayWordlist[1] = getTextfieldAsArray(ListForm.textListB);
-
-	// Loop through lists
-	ListForm.textListResult.value = "";
-	aggregationNewWords = "";
-	maxLoop = 20000;
-	for (a = 0; a < arrayWordlist[0].length && a < maxLoop; a++) {
-		wordA = arrayWordlist[0][a];
-		wordAsearch = wordA;
-		//str.replace(/CD/g,"XY")
-		if (ListForm.checkCaseInsensitive.checked)
-			wordAsearch = wordAsearch.toLowerCase();
-		foundWord = false;
-		for (b = 0; b < arrayWordlist[1].length && b < maxLoop; b++) {
-			wordB = arrayWordlist[1][b];
-			wordBsearch = wordB;
-			if (ListForm.checkCaseInsensitive.checked)
-				wordBsearch = wordBsearch.toLowerCase();
-			if (wordBsearch == wordAsearch)
-				foundWord = true;
-		}
-
-		// Add something
-		if (appMode == 2) {
-			// Subtract A-B
-			if (!foundWord) {
-				ListForm.textListResult.value += wordA + "\n";
-			}
-			else {
-				if (!ListForm.checkRemoveEmpty.checked)
-					ListForm.textListResult.value += "\n";
-			}
-		}
-		else if (appMode == 3) {
-			// In Both (in A and B)
-			if (foundWord) {
-				ListForm.textListResult.value += wordA + "\n";
-			}
-			else {
-				if (!ListForm.checkRemoveEmpty.checked)
-					ListForm.textListResult.value += "\n";
-			}
-		}
-		else if (appMode == 4) {
-			// Unify both A and B, no duplicates
-			ListForm.textListResult.value += wordA + "\n";
-			if (!foundWord && aggregationNewWords.indexOf(wordB) == -1) {
-				aggregationNewWords += wordB + "\n";
-			}
-		}
-		else if (appMode == 5) {
-			// Check duplicates from A only
-			if (a >= 1) {
-				wordLastAsearch = arrayWordlist[0][a-1];
-				if (ListForm.checkCaseInsensitive.checked)
-					wordLastAsearch = wordLastAsearch.toLowerCase();
-				if (wordLastAsearch != wordAsearch) {
-					ListForm.textListResult.value += wordA + "\n";
-				}
-			}
-			else
-				ListForm.textListResult.value += wordA + "\n";
-		}
+	.data-form textarea {
+		width: 10em;
+		min-height: 14em;			
 	}
-	ListForm.textListResult.value += aggregationNewWords;
-}
 
-</script>
+	/* Nice & simple: Button - http://codepen.io/tomsoderlund/pen/qqyzqp */
+	button {
+		background-color: dodgerblue;
+		color: white;
+		border-radius: 0.2em;
+		border: none;
+		box-shadow: 0 0.125em 0.125em rgba(0,0,0, 0.3);
+		box-sizing: border-box;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: bold;
+		min-width: 15em;
+		outline: none;
+		padding: 0.6em;
+		margin: 0.2em;
+		transition: all 0.2s;
+	}
+	button:hover:not(:disabled),
+	button:focus:not(:disabled) {
+		margin-top: 0.1em;
+		margin-bottom: 0.3em;
+		box-shadow: 0 0.2em 0.1em rgba(0,0,0, 0.2);
+	}
+	button:hover:active {
+		margin-top: 0.3em;
+		margin-bottom: 0.1em;
+		box-shadow: 0 0.02em 0.125em rgba(0,0,0, 0.4);
+		transition: all 0.05s;
+	}
+	button:disabled {
+		cursor: initial;
+		background-color: silver;
+	}
+
+	/* Nice & simple: Input and Dropdown Menu - http://codepen.io/tomsoderlund/pen/GNBbWz */
+	input,
+	textarea,
+	select {
+		background-color: white;
+		color: inherit;
+		outline: none;
+		resize: none;
+		box-shadow: inset 0 0.125em 0.125em rgba(0,0,0, 0.3);
+		box-sizing: border-box;
+		border-radius: 0.2em;
+		border: 2px solid lightgray;
+		font-family: inherit;
+		font-size: inherit;
+		padding: 0.6em;
+		margin: 0.2em;
+	}
+	input:hover:not(:disabled),
+	textarea:hover:not(:disabled),
+	select:hover:not(:disabled) {
+		border-color: silver;
+	}
+	input:focus,
+	textarea:focus,
+	select:focus {
+		border-color: darkgray;
+	}
+	input:disabled,
+	textarea:disabled,
+	textarea:read-only,
+	select:disabled {
+		background-color: whitesmoke;
+	}
+	input::placeholder {
+		color: lightgray;
+	}
+
+	select {
+		box-shadow: none;
+		background-color: greenyellow;
+		height: 2.5em;
+	}
+
+</style>
 
 </html>
