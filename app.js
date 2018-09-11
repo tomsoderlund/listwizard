@@ -26,10 +26,14 @@ function doRunScript() {
 	arrayWordlist[0] = getTextfieldAsArray(ListForm.textListA);
 	arrayWordlist[1] = getTextfieldAsArray(ListForm.textListB);
 
+	const appendToResult = function (str, addNewLine = true) {
+		ListForm.textListResult.value += str + (addNewLine ? '\n' : '');
+	};
+
 	// Loop through lists
 	ListForm.textListResult.value = "";
 	aggregationNewWords = "";
-	maxLoop = 20000;
+	maxLoop = 10000;
 	for (a = 0; a < arrayWordlist[0].length && a < maxLoop; a++) {
 		wordA = arrayWordlist[0][a];
 		wordAsearch = wordA;
@@ -45,47 +49,61 @@ function doRunScript() {
 				foundWord = true;
 		}
 
-		// Add something
-		if (appMode == 2) {
-			// Subtract A-B
-			if (!foundWord) {
-				ListForm.textListResult.value += wordA + "\n";
-			}
-			else {
-				if (!ListForm.checkRemoveEmpty.checked)
-					ListForm.textListResult.value += "\n";
-			}
-		}
-		else if (appMode == 3) {
-			// In Both (in A and B)
-			if (foundWord) {
-				ListForm.textListResult.value += wordA + "\n";
-			}
-			else {
-				if (!ListForm.checkRemoveEmpty.checked)
-					ListForm.textListResult.value += "\n";
-			}
-		}
-		else if (appMode == 4) {
-			// Unify both A and B, no duplicates
-			ListForm.textListResult.value += wordA + "\n";
-			if (!foundWord && aggregationNewWords.indexOf(wordB) == -1) {
-				aggregationNewWords += wordB + "\n";
-			}
-		}
-		else if (appMode == 5) {
-			// Check duplicates from A only
-			if (a >= 1) {
-				wordLastAsearch = arrayWordlist[0][a-1];
-				if (ListForm.checkCaseInsensitive.checked)
-					wordLastAsearch = wordLastAsearch.toLowerCase();
-				if (wordLastAsearch != wordAsearch) {
-					ListForm.textListResult.value += wordA + "\n";
+		const doFunctions = {
+			doSubtraction: function () {
+				// Subtract A-B
+				if (!foundWord) {
+					appendToResult(wordA);
 				}
-			}
-			else
-				ListForm.textListResult.value += wordA + "\n";
-		}
+				else {
+					if (!ListForm.checkRemoveEmpty.checked)
+						appendToResult('');
+				}
+			},
+
+			doIntersection: function () {
+				// In Both (in A and B)
+				if (foundWord) {
+					appendToResult(wordA);
+				}
+				else {
+					if (!ListForm.checkRemoveEmpty.checked)
+						appendToResult('');
+				}
+			},
+
+			doAggregation: function () {
+				// Unify both A and B, no duplicates
+				appendToResult(wordA);
+				if (!foundWord && aggregationNewWords.indexOf(wordB) == -1) {
+					aggregationNewWords += wordB + '\n';
+				}
+			},
+
+			doMultiply: function () {
+				for (b = 0; b < arrayWordlist[1].length && b < maxLoop; b++) {
+					wordB = arrayWordlist[1][b];
+					appendToResult(wordA + ' ' + wordB);
+				}
+			},
+
+			doRemoveDuplicates: function () {
+				// Check duplicates from A only
+				if (a >= 1) {
+					wordLastAsearch = arrayWordlist[0][a-1];
+					if (ListForm.checkCaseInsensitive.checked)
+						wordLastAsearch = wordLastAsearch.toLowerCase();
+					if (wordLastAsearch != wordAsearch) {
+						appendToResult(wordA);
+					}
+				}
+				else
+					appendToResult(wordA);
+			},
+		};
+
+		// Execute
+		doFunctions['do' + appMode]();
 	}
 	ListForm.textListResult.value += aggregationNewWords;
 }
