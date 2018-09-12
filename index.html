@@ -2,6 +2,7 @@
 
 <head>
 	<title>Boolean List Manipulator</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 </head>
 
 <body>
@@ -13,9 +14,9 @@
 		<div class="data-form">
 			<div class="data-cell">
 				List A:<br>
-				<textarea name="textListA" id="textListA">Value 1
-Value 2
-Value 3</textarea>
+				<textarea name="textListA" id="textListA">Apple
+Banana
+Citrus</textarea>
 			</div>
 			<div class="data-cell">
 				Operator:<br>
@@ -29,7 +30,7 @@ Value 3</textarea>
 			</div>
 			<div class="data-cell">
 				List B:<br>
-				<textarea name="textListB" id="textListB">Value 2</textarea>
+				<textarea name="textListB" id="textListB">Banana</textarea>
 			</div>
 			<div class="data-cell">
 				=
@@ -79,8 +80,9 @@ Value 3</textarea>
 	}
 
 	.data-cell textarea {
-		width: 10em;
-		min-height: 14em;			
+		width: 10em; /* 8/0.8 */
+		min-height: 17.5em; /* 14/0.8 */
+		font-size: 0.8em;
 	}
 
 	/* Nice & simple: Button - http://codepen.io/tomsoderlund/pen/qqyzqp */
@@ -158,6 +160,7 @@ Value 3</textarea>
 	select {
 		box-shadow: none;
 		background-color: greenyellow;
+		width: 8em;
 		height: 2.5em;
 	}
 
