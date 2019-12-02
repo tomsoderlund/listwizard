@@ -1,4 +1,3 @@
-boolean-list-manipulator
-========================
+# Listwizard
 
 Manipulate text lists with subtraction, intersection, aggregation, etc.
