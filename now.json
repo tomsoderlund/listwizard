@@ -1,0 +1,7 @@
+{
+  "version":2,
+  "alias": ["listwizard.app", "www.listwizard.app"],
+  "regions":[
+    "arn1"
+  ]
+}
