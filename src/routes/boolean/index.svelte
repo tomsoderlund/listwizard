@@ -74,6 +74,13 @@ Citrus</textarea>
     min-height: 20em; /* 16/0.8 */
   }
 
+  select {
+    box-shadow: none;
+    background-color: greenyellow;
+    width: 8em;
+    height: 2.5em;
+  }
+
   @media only screen and (max-width: 600px) {
     body {
       text-align: center;

@@ -35,42 +35,58 @@ code {
 	}
 }
 
-/* Nice & simple: Button - http://codepen.io/tomsoderlund/pen/qqyzqp */
-button {
+/* #NiceAndSimple: Button - http://codepen.io/tomsoderlund/pen/qqyzqp */
+button,
+.button {
+  position: relative;
   background-color: dodgerblue;
   color: white;
   border-radius: 0.2em;
   border: none;
-  box-shadow: 0 0.125em 0.125em rgba(0,0,0, 0.3);
+  box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
+  display: inline-block;
   cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
   font-family: inherit;
   font-size: inherit;
+  line-height: normal;
   font-weight: bold;
-  min-width: 15em;
+  text-align: center;
   outline: none;
   padding: 0.6em;
   margin: 0.2em;
-  transition: all 0.2s;
+  transition: all 0.1s;
+  /* min-width: 15em; */
+}
+button:focus:not(:disabled),
+.button:focus:not(:disabled) {
+  opacity: 0.8;
 }
 button:hover:not(:disabled),
-button:focus:not(:disabled) {
-  margin-top: 0.1em;
-  margin-bottom: 0.3em;
-  box-shadow: 0 0.2em 0.1em rgba(0,0,0, 0.2);
+.button:hover:not(:disabled) {
+  opacity: 0.8;
+  top: -0.1em;
+  box-shadow: 0 0.2em 0.1em rgba(0, 0, 0, 0.2);
 }
-button:hover:active {
-  margin-top: 0.3em;
-  margin-bottom: 0.1em;
-  box-shadow: 0 0.02em 0.125em rgba(0,0,0, 0.4);
+button:hover:active,
+.button:hover:active {
+  top: 0.1em;
+  box-shadow: 0 0.02em 0.125em rgba(0, 0, 0, 0.4);
   transition: all 0.05s;
 }
-button:disabled {
+button:disabled,
+.button:disabled {
   cursor: initial;
   background-color: silver;
 }
+a.button {
+  text-decoration: none;
+}
 
-/* Nice & simple: Input and Dropdown Menu - http://codepen.io/tomsoderlund/pen/GNBbWz */
+
+/* #NiceAndSimple: Input and Dropdown Menu - http://codepen.io/tomsoderlund/pen/GNBbWz */
 input,
 textarea,
 select {
@@ -80,36 +96,40 @@ select {
   resize: none;
   box-shadow: inset 0 0.125em 0.125em rgba(0,0,0, 0.3);
   box-sizing: border-box;
-  border-radius: 0.2em;
-  border: 2px solid lightgray;
+  border-radius: 0.1em;
+  border: 1px solid lightgray;
   font-family: inherit;
   font-size: inherit;
   padding: 0.6em;
   margin: 0.2em;
+  /* min-width: 15em; */
 }
-input:hover:not(:disabled),
-textarea:hover:not(:disabled),
-select:hover:not(:disabled) {
+input::placeholder,
+textarea::placeholder {
+  color: lightgray;
+}
+input:hover:not(:disabled):not(:focus),
+.input-like:hover:not(:disabled):not(:focus),
+textarea:hover:not(:disabled):not(:focus),
+select:hover:not(:disabled):not(:focus) {
   border-color: silver;
 }
 input:focus,
+.input-like:focus,
 textarea:focus,
 select:focus {
   border-color: darkgray;
+  background-color: lightyellow;
 }
-input:disabled,
-textarea:disabled,
-textarea:read-only,
-select:disabled {
+input:read-only,
+textarea:read-only {
+  color: black;
   background-color: whitesmoke;
 }
-input::placeholder {
-  color: lightgray;
-}
-
-select {
-  box-shadow: none;
-  background-color: greenyellow;
-  width: 8em;
-  height: 2.5em;
+input:disabled,
+.input-like:disabled,
+textarea:disabled,
+select:disabled {
+  color: darkgray;
+  background-color: whitesmoke;
 }
