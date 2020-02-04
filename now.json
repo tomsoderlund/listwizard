@@ -1,6 +1,10 @@
 {
-  "version":2,
-  "regions":[
+  "version": 2,
+  "name": "listwizard",
+  "builds": [
+    { "src": "package.json", "use": "now-sapper" }
+  ],
+  "regions": [
     "arn1"
   ]
 }
