@@ -9,6 +9,9 @@ const processRow = (row, index, operations) => {
   for (const o in operations) {
     const operation = operations[o]
     switch (operation.operation) {
+      case 'regex':
+        newRow = newRow.replace(new RegExp(operation.from, 'g'), operation.to)
+        break
       case 'splitColumn':
         newRow = newRow.substr(0, operation.position) + '\t' + newRow.substring(operation.position, newRow.length)
         break

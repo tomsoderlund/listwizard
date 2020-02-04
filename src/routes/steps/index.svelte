@@ -12,10 +12,6 @@
     />
   </Section>
 
-  <Section title='Operations'>
-    {JSON.stringify(operations)}
-  </Section>
-
   <Section title='Output' class='output'>
     <CopyToClipboard
       textToCopy={formatTSV(processText(rawText, operations))}
@@ -23,6 +19,10 @@
     <Table
       values={processText(rawText, operations)}
     />
+  </Section>
+
+  <Section title='Operations'>
+    {JSON.stringify(operations)}
   </Section>
 </SectionContainer>
 
@@ -62,6 +62,12 @@
   let operations = [
     { operation: 'splitColumn', position: 5 },
     { operation: 'splitColumn', position: 11 },
+    { operation: 'regex', from: 'USD', to: '\tUSD\t' },
+    { operation: 'regex', from: 'EUR', to: '\tEUR\t' },
+    { operation: 'regex', from: 'STOCKHOLM', to: '\tSTOCKHOLM\t' },
+    { operation: 'regex', from: '.COM', to: '.COM\t' },
+    { operation: 'regex', from: '.IO', to: '.IO\t' },
+    { operation: 'regex', from: 'INC.', to: 'INC.\t' },
   ]
 
   import SectionContainer from '../../components/SectionContainer.svelte'
