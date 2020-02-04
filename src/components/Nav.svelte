@@ -50,8 +50,7 @@
 
 <nav>
 	<ul>
-		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>home</a></li>
-		<li><a class='{segment === "about" ? "selected" : ""}' href='about'>about</a></li>
-		<li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>blog</a></li>
+		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>Start</a></li>
+		<li><a class='{segment === "boolean" ? "selected" : ""}' href='boolean'>Boolean Manipulation</a></li>
 	</ul>
 </nav>

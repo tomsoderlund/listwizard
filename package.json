@@ -1,6 +1,6 @@
 {
   "name": "listwizard",
-  "description": "listwizard",
+  "description": "Manipulate text lists with subtraction, intersection, aggregation, etc",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
