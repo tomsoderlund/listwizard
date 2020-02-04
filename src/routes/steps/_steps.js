@@ -18,3 +18,10 @@ const processRow = (row, index, operations) => {
   }
   return newRow.split('\t')
 }
+
+export const formatTSV = function (array) {
+  return array.reduce((result, columns) => {
+    const row = columns.reduce((result, column) => result + column + '\t', '')
+    return result + row + '\n'
+  }, '')
+}

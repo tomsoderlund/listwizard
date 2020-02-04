@@ -20,7 +20,7 @@
       values={processText(rawText, operations)}
     />
     <CopyToClipboard
-      textToCopy={JSON.stringify(processText(rawText, operations), null, 2)}
+      textToCopy={formatTSV(processText(rawText, operations))}
     />
   </Section>
 </SectionContainer>
@@ -33,7 +33,7 @@
 <script>
   export let params, query
 
-  import { processText } from './_steps'
+  import { processText, formatTSV } from './_steps'
 
   let rawText = `02-0302-03AWS EMEAAWS.AMAZON.COUSD78,00774,13
 02-0202-03GOOGLE *CLOUD_01DF0B-DCCÖGOOGLE.COM2 184,07
