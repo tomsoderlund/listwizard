@@ -21,14 +21,10 @@
     {#each values as row}
       <tr>
         {#if typeof row === 'string'}
-          <td>
-            {row}
-          </td>
+          <td>{row}</td>
         {:else}
           {#each Object.values(row) as column, columnIndex}
-            <td>
-              {customFormat ? customFormat(Object.keys(row)[columnIndex], column) : column}
-            </td>
+            <td>{customFormat ? customFormat(Object.keys(row)[columnIndex], column) : column}</td>
           {/each}
         {/if}
       </tr>

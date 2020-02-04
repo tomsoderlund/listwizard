@@ -1,31 +1,3 @@
-<svelte:head>
-  <title>{pageTitle}</title>
-</svelte:head>
-
-<h1>{pageTitle}</h1>
-
-<SectionContainer>
-  <Section title='Input'>
-    <textarea
-      placeholder='Write/paste text rows here'
-      bind:value={rawText}
-    />
-  </Section>
-
-  <Section title='Output' class='output'>
-    <CopyToClipboard
-      textToCopy={formatTSV(processText(rawText, operations))}
-    />
-    <Table
-      values={processText(rawText, operations)}
-    />
-  </Section>
-
-  <Section title='Operations'>
-    {JSON.stringify(operations)}
-  </Section>
-</SectionContainer>
-
 <script context="module">
   export async function preload({ params, query }) {
     return { params, query }
@@ -74,6 +46,7 @@
   import Section from '../../components/Section.svelte'
   import Table from '../../components/Table.svelte'
   import CopyToClipboard from '../../components/CopyToClipboard.svelte'
+  import OperationsManager from './OperationsManager.svelte'
 
   const pageTitle = 'Step-by-Step Manipulation'
 </script>
@@ -88,3 +61,33 @@
     font-size: 0.8em;
   }
 </style>
+
+<svelte:head>
+  <title>{pageTitle}</title>
+</svelte:head>
+
+<h1>{pageTitle}</h1>
+
+<SectionContainer>
+  <Section title='Input'>
+    <textarea
+      placeholder='Write/paste text rows here'
+      bind:value={rawText}
+    />
+  </Section>
+
+  <Section title='Operations'>
+    <OperationsManager
+      operations={operations}
+    />
+  </Section>
+
+  <Section title='Output' class='output'>
+    <CopyToClipboard
+      textToCopy={formatTSV(processText(rawText, operations))}
+    />
+    <Table
+      values={processText(rawText, operations)}
+    />
+  </Section>
+</SectionContainer>
