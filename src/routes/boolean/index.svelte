@@ -1,20 +1,19 @@
 <svelte:head>
-  <title>Boolean List Manipulation</title>
+  <title>{pageTitle}</title>
 </svelte:head>
 
-<h1>Boolean List Manipulation</h1>
+<h1>{pageTitle}</h1>
 
 <form name="ListForm">
 
-  <div class="data-form">
-    <div class="data-cell">
-      List A:<br>
+  <SectionContainer>
+    <Section title='List A'>
       <textarea name="textListA" id="textListA">Apple
 Banana
 Citrus</textarea>
-    </div>
-    <div class="data-cell">
-      Operator:<br>
+    </Section>
+
+    <Section title='Operator'>
       <select name="listOperands" size="1" id="listOperands">
         <option value="Subtraction" selected>Subtract</option>
         <option value="Intersection">Intersection</option>
@@ -22,19 +21,16 @@ Citrus</textarea>
         <option value="Multiply">Multiply</option>
         <option value="RemoveDuplicates">Remove duplicates</option>
       </select>
-    </div>
-    <div class="data-cell">
-      List B:<br>
+    </Section>
+
+    <Section title='List B'>
       <textarea name="textListB" id="textListB">Banana</textarea>
-    </div>
-    <div class="data-cell">
-      =
-    </div>
-    <div class="data-cell">
-      Results:<br>
+    </Section>
+
+    <Section title='Results'>
       <textarea readonly name="textListResult" id="textListResult"></textarea>
-    </div>
-  </div>
+    </Section>
+  </SectionContainer>
 
   <div>
     <button type="button" name="buttonRun" on:click={doRunScript}>Generate</button>
@@ -51,24 +47,16 @@ Citrus</textarea>
 
 <script>
   import { doRunScript } from './_booleanManipulation'
+
+  import SectionContainer from '../../components/SectionContainer.svelte'
+  import Section from '../../components/Section.svelte'
+
+  const pageTitle = 'Boolean List Manipulation'
 </script>
 
 <style>
 
-  .data-form {
-    display: inline-flex; /* inline-flex */
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .data-cell {
-    min-width: 1em;
-    text-align: center;
-  }
-
-  .data-cell textarea {
+  textarea {
     font-size: 0.8em;
     width: 15em; /* 12/0.8 */
     min-height: 20em; /* 16/0.8 */
@@ -79,21 +67,6 @@ Citrus</textarea>
     background-color: greenyellow;
     width: 8em;
     height: 2.5em;
-  }
-
-  @media only screen and (max-width: 600px) {
-    body {
-      text-align: center;
-    }
-
-    .data-cell {
-      width: 100%;
-      text-align: center;
-    }
-
-    .data-cell textarea {
-      width: 80%;
-    }
   }
 
 </style>

@@ -51,6 +51,7 @@
 <nav>
 	<ul>
 		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>Start</a></li>
+		<li><a class='{segment === "steps" ? "selected" : ""}' href='steps'>Step-by-Step</a></li>
 		<li><a class='{segment === "boolean" ? "selected" : ""}' href='boolean'>Boolean Manipulation</a></li>
 	</ul>
 </nav>

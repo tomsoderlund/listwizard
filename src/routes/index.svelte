@@ -7,8 +7,8 @@
 <p>{description}</p>
 
 <section>
+  <a href='./steps' class='button'>Step-by-Step Manipulation</a>
 	<a href='./boolean' class='button'>Boolean Manipulation</a>
-	<!-- <a href='./steps' class='button'>Step-by-Step Manipulation</a> -->
 </section>
 
 <p>&copy; <a href="https://twitter.com/tomsoderlund" target="_blank">Tom S&ouml;derlund</a> 2020</p>
