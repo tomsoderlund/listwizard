@@ -50,7 +50,7 @@ Citrus</textarea>
 </form>
 
 <script>
-  import { doRunScript } from '../../lib/booleanManipulation'
+  import { doRunScript } from './_booleanManipulation'
 </script>
 
 <style>
