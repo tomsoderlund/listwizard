@@ -1,10 +1,10 @@
-<section>
+<section class={title.toLowerCase()}>
   <h2>{title}</h2>
   <slot></slot>
 </section>
 
 <script>
-  export let title
+  export let title = ''
 </script>
 
 <style>

@@ -13,14 +13,15 @@
   </Section>
 
   <Section title='Operations'>
+    {JSON.stringify(operations)}
   </Section>
 
-  <Section title='Output'>
-    <Table
-      values={processText(rawText, operations)}
-    />
+  <Section title='Output' class='output'>
     <CopyToClipboard
       textToCopy={formatTSV(processText(rawText, operations))}
+    />
+    <Table
+      values={processText(rawText, operations)}
     />
   </Section>
 </SectionContainer>
@@ -73,6 +74,11 @@
 
 <style>
   textarea {
+    font-size: 0.8em;
     min-height: 20em;
+  }
+
+  :global(.output table) {
+    font-size: 0.8em;
   }
 </style>
