@@ -15,6 +15,9 @@ const processRow = (row, index, operations) => {
       case 'splitColumn':
         newRow = newRow.substr(0, operation.position) + '\t' + newRow.substring(operation.position, newRow.length)
         break
+      case 'insertAt':
+        newRow = newRow.substr(0, operation.position) + operation.text + newRow.substring(operation.position, newRow.length)
+        break
       default:
         break
     }
