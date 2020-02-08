@@ -68,7 +68,7 @@
 
 <PageHead
   title={pageTitle}
-  description='Manipulate text lists with step-by-step actions and get a CSV file as output.'
+  description='Manipulate text lists with step-by-step actions and get a CSV file as output'
 />
 
 <h1>{pageTitle}</h1>
