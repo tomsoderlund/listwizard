@@ -26,9 +26,11 @@
 
 	li {
 		display: block;
-		float: left;
 		flex: 1;
 		background-color: #eddbff;
+		width: 100%;
+		height: 100%;
+		padding: 1em 0.5em;
 	}
 
 	.selected {
@@ -39,8 +41,6 @@
 	a {
 		display: block;
 		text-decoration: none;
-		width: 100%;
-		padding: 1em 0.5em;
 		text-align: center;
 	}
 </style>
@@ -49,6 +49,6 @@
 	<ul>
 		<li class='{segment === undefined ? 'selected' : ''}' ><a href='.'>Start</a></li>
 		<li class='{segment === 'steps' ? 'selected' : ''}' ><a href='steps'>Step-by-Step</a></li>
-		<li class='{segment === 'boolean' ? 'selected' : ''}' ><a href='boolean'>Boolean Manipulation</a></li>
+		<li class='{segment === 'boolean' ? 'selected' : ''}' ><a href='boolean'>Boolean</a></li>
 	</ul>
 </nav>
