@@ -1,6 +1,6 @@
 {
   "name": "listwizard",
-  "description": "Manipulate text lists with search/replace, regular expressions, and boolean operators.",
+  "description": "Manipulate text lists with search/replace, regular expressions, and boolean operators. Convert text lists to CSV files.",
   "version": "0.2.0",
   "scripts": {
     "dev": "sapper dev",
