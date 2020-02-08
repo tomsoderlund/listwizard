@@ -1,6 +1,7 @@
-<svelte:head>
-  <title>{pageTitle}</title>
-</svelte:head>
+<PageHead
+  title={pageTitle}
+  description='Manipulate text lists with subtraction, intersection, aggregation, etc'
+/>
 
 <h1>{pageTitle}</h1>
 
@@ -48,6 +49,7 @@ Citrus</textarea>
 <script>
   import { doRunScript } from './_booleanManipulation'
 
+  import PageHead from '../../components/PageHead.svelte'
   import SectionContainer from '../../components/SectionContainer.svelte'
   import Section from '../../components/Section.svelte'
 
@@ -64,9 +66,10 @@ Citrus</textarea>
 
   select {
     box-shadow: none;
-    background-color: greenyellow;
     width: 8em;
     height: 2.5em;
+    background-color: darkturquoise;
+    color: white;
   }
 
 </style>

@@ -45,13 +45,14 @@
     { operation: 'regex', from: '\t$', to: '' },
   ]
 
+  import PageHead from '../../components/PageHead.svelte'
   import SectionContainer from '../../components/SectionContainer.svelte'
   import Section from '../../components/Section.svelte'
   import Table from '../../components/Table.svelte'
   import CopyToClipboard from '../../components/CopyToClipboard.svelte'
   import OperationsManager from './OperationsManager.svelte'
 
-  const pageTitle = 'Step-by-Step Manipulation'
+  const pageTitle = 'Step-by-Step List Manipulation'
 </script>
 
 <style>
@@ -65,9 +66,9 @@
   }
 </style>
 
-<svelte:head>
-  <title>{pageTitle}</title>
-</svelte:head>
+<PageHead
+  title={pageTitle}
+/>
 
 <h1>{pageTitle}</h1>
 

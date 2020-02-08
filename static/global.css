@@ -44,7 +44,7 @@ code {
 button,
 .button {
   position: relative;
-  background-color: dodgerblue;
+  background-color: darkturquoise;
   color: white;
   border-radius: 0.2em;
   border: none;
@@ -63,7 +63,7 @@ button,
   padding: 0.6em;
   margin: 0.2em;
   transition: all 0.1s;
-  /* min-width: 15em; */
+  min-width: 10em;
 }
 button:focus:not(:disabled),
 .button:focus:not(:disabled) {

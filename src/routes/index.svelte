@@ -1,6 +1,4 @@
-<svelte:head>
-	<title>{nameCapitalized} – {description}</title>
-</svelte:head>
+<PageHead />
 
 <h1>{nameCapitalized}</h1>
 
@@ -15,6 +13,8 @@
 
 <script>
 	import { name, description } from '../../package.json'
+
+  import PageHead from '../components/PageHead.svelte'
 
 	const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1)
 
