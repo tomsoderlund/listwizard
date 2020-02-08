@@ -12,5 +12,5 @@
 <svelte:head>
   <title>{title ? title + ' – ' : ''}Listwizard – {description}</title>
   <meta name="description" content={description} />
-  <meta property="og:image" content={`https://d3htstcz5zldi1.cloudfront.net/?url=${host + path}`} />
+  <meta property="og:image" content={`https://screens.tomorroworld.com/?url=${host + path}`} />
 </svelte:head>
