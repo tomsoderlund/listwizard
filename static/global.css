@@ -62,7 +62,7 @@ button,
   outline: none;
   padding: 0.6em;
   margin: 0.2em;
-  transition: all 0.1s;
+  transition: all 0.2s;
   min-width: 10em;
 }
 button:focus:not(:disabled),
@@ -90,6 +90,31 @@ a.button {
   text-decoration: none;
 }
 
+.progress-button {
+  background: linear-gradient(
+    90deg,
+    darkturquoise 0%,
+    darkturquoise 45%,
+    salmon 55%,
+    salmon 100%
+  );
+  background-size: 400% 100%;
+  background-position: 0% 50%;
+}
+.progress-button.in-progress {
+  animation: animation-progress 5s 0s 1;
+}
+.progress-button.done {
+  background-position: -50% 50%;
+}
+@keyframes animation-progress {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: -50% 50%;
+  }
+}
 
 /* #NiceAndSimple: Input and Dropdown Menu - http://codepen.io/tomsoderlund/pen/GNBbWz */
 input,
