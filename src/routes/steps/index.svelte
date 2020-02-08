@@ -35,13 +35,14 @@
     { operation: 'splitColumn', position: 5 },
     { operation: 'splitColumn', position: 11 },
     { operation: 'insertAt', position: 0, text: '- [ ]\t2020-' },
-    { operation: 'regex', from: 'USD', to: '\tUSD\t' },
-    { operation: 'regex', from: 'EUR', to: '\tEUR\t' },
-    { operation: 'regex', from: 'STOCKHOLM', to: ' STOCKHOLM\t' },
-    { operation: 'regex', from: '.COM', to: '.COM\t' },
-    { operation: 'regex', from: '.IO', to: '.IO\t' },
-    { operation: 'regex', from: 'INC.', to: 'INC. ' },
+    { operation: 'regex', from: '(USD|EUR)', to: '\t$&\t' },
+    { operation: 'regex', from: '(.IO|.COM|STOCKHOLM)', to: '$&\t' },
+    { operation: 'regex', from: '(CCÖ)', to: ' $& ' },
+    { operation: 'regex', from: '(INC.|LLC|EMEA|IMGIX|GITHUB|MLAB)', to: '$& ' },
+    { operation: 'regex', from: '(FB.ME|STOCKHOLM)', to: ' $&' },
     { operation: 'regex', from: 'AZURE', to: 'AZURE\t' },
+    { operation: 'regex', from: ',[0-9]{2}', to: '$&\t' },
+    { operation: 'regex', from: '\t$', to: '' },
   ]
 
   import SectionContainer from '../../components/SectionContainer.svelte'
