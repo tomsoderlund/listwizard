@@ -1,5 +1,6 @@
 <script>
-	export let segment;
+  import { page } from '$app/stores'
+  const { path } = $page
 </script>
 
 <style>
@@ -47,8 +48,8 @@
 
 <nav>
 	<ul>
-		<li class='{segment === undefined ? 'selected' : ''}' ><a href='.'>Start</a></li>
-		<li class='{segment === 'steps' ? 'selected' : ''}' ><a href='steps'>Step-by-Step</a></li>
-		<li class='{segment === 'boolean' ? 'selected' : ''}' ><a href='boolean'>Boolean</a></li>
+		<li class='{path === '/' ? 'selected' : ''}' ><a href='.'>Start</a></li>
+		<li class='{path === '/steps' ? 'selected' : ''}' ><a href='steps'>Step-by-Step</a></li>
+		<li class='{path === '/boolean' ? 'selected' : ''}' ><a href='boolean'>Boolean</a></li>
 	</ul>
 </nav>
