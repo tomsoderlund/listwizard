@@ -1,6 +1,5 @@
 <script>
   import { page } from '$app/stores'
-  const { path } = $page
 </script>
 
 <style>
@@ -48,8 +47,8 @@
 
 <nav>
 	<ul>
-		<li class='{path === '/' ? 'selected' : ''}' ><a href='.'>Start</a></li>
-		<li class='{path === '/steps' ? 'selected' : ''}' ><a href='steps'>Step-by-Step</a></li>
-		<li class='{path === '/boolean' ? 'selected' : ''}' ><a href='boolean'>Boolean</a></li>
+		<li class='{$page.path === '/' ? 'selected' : ''}' ><a href='.'>Start</a></li>
+		<li class='{$page.path === '/steps' ? 'selected' : ''}' ><a href='steps'>Step-by-Step</a></li>
+		<li class='{$page.path === '/boolean' ? 'selected' : ''}' ><a href='boolean'>Boolean</a></li>
 	</ul>
 </nav>
