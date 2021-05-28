@@ -2,5 +2,9 @@
 /node_modules/
 /src/node_modules/@sapper/
 yarn-error.log
-/cypress/screenshots/
+
 /__sapper__/
+/.svelte-kit
+/.svelte
+/.vercel_build_output
+/.vercel
