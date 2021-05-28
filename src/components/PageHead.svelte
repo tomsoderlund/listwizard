@@ -1,8 +1,7 @@
 <script>
-  import { stores } from '@sapper/app'
+  import { page } from '$app/stores'
   import { description as defaultDescription } from '../../package.json'
 
-  const { page } = stores() // preloading, page, session
   const { host, path } = $page // host, path, params, query
 
   export let title = undefined
