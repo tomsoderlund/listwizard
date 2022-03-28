@@ -34,7 +34,7 @@
   let operations = [
     { operation: 'splitColumn', position: 5 },
     { operation: 'splitColumn', position: 11 },
-    { operation: 'insertAt', position: 0, text: '- [ ]\t2021-' },
+    { operation: 'insertAt', position: 0, text: '- [ ]\t2022-' },
     { operation: 'regex', from: '(USD|EUR)', to: '\t$&\t' },
     { operation: 'regex', from: '(.IO|.COM|STOCKHOLM)', to: '$&\t' },
     { operation: 'regex', from: '(CCÖ)', to: ' $& ' },
