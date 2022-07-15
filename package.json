@@ -17,6 +17,6 @@
     "eslint": "^7.22.0",
     "eslint-plugin-svelte3": "^3.2.0",
     "standard": "^16.0.3",
-    "svelte": "^3.34.0"
+    "svelte": "^3.49.0"
   }
 }
